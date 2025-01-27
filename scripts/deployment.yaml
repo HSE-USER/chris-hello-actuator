@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chris-jenkins-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chris-jenkins
+  template:
+    metadata:
+      labels:
+        app: chris-jenkins
+    spec:
+      containers:
+        - name: chris-jenkins-container
+          image: iamchrisjt/chris-hello-actuator:chris-jenkins
+          ports:
+            - containerPort: 8080
